@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Vendor Bidding</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-5 display-4">Institute Orders</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <% orders.forEach(order => { %>
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="<%= order.instituteImages[0] %>" class="card-img-top" alt="<%= order.instituteName %>">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= order.instituteName %></h5>
+                            <p class="card-text"><%= order.details1 %></p>
+                            <% if (!isNaN(order.lowestBid)) { %>
+                                <p class="card-text"><strong>Lowest Bid:</strong> ₹<%= order.lowestBid %></p>
+                            <% } else { %>
+                                <p class="card-text"><strong>Lowest Bid:</strong> Be the first to bid </p>
+                            <% } %>
+                            <a href="/details/<%= order.serialNo %>" class="btn btn-primary">View Bids</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
